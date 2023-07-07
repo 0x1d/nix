@@ -14,6 +14,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration.nix
+          ./system/boot.nix
           ./system/i18n.nix
           ./system/network.nix
           ./system/sound.nix
