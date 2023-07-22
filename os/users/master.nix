@@ -26,12 +26,18 @@
       cargo
       kubectl
       chromium
+      obsidian
     ];
 
     programs.home-manager.enable = true;
 
     programs.bash = {
       enable = true;
+    };
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
 
     programs.starship = {
@@ -49,6 +55,12 @@
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+    };
+
+    services = {
+      syncthing = {
+        enable = true;
+      };
     };
   };
 }

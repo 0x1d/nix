@@ -21,6 +21,7 @@
     git
     gnumake
     pinentry
+    direnv
     vim
     gcc
     unzip
@@ -31,5 +32,6 @@
     thunderbird
     remmina
     docker-buildx
+    appimage-run
   ];
 }
