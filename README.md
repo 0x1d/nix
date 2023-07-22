@@ -9,20 +9,24 @@ Run `ctl.sh` to see the list of commands to manage the system.
 ```bash
 ./ctl.sh
 
- ~> OS
+Usage: ctl.sh <command> <subcommand>
 
-    os-test           Rebuild and test OS without creating a new generation
-    os-rebuild        Rebuild OS and create new generation
-    os-upgrade        Upgrade channels and rebuild OS
+ ~> os
+
+    test              Rebuild and test OS without new generation
+    rebuild           Rebuild OS and create new generation
+    upgrade           Upgrade channels and rebuild OS
+    changes           Show changes between generations
+    gc                Garbage collect old generations
     vm                Build and run as VM
 
- ~> Store
+ ~> store
 
-    store-gc          Collecting garbage in nix-store
-    store-optimise    Optimise nix-store
+    gc                Collecting garbage in nix-store
+    optimise          Optimise nix-store
     search PACKAGE    Search for package
 
- ~> Shell
+ ~> shell
 
-    shell NAME        Run a nix-shell from ./shell/
+    run NAME          Run a nix-shell from ./shell/
 ```
