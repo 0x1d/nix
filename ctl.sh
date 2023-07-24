@@ -34,8 +34,8 @@ function os {
 		sudo nixos-rebuild --flake ./os#nixos test
 	}
 	function rebuild {
-		echo "Rebuild OS"
-		sudo nixos-rebuild --flake ./os#nixos switch
+		echo "Rebuild OS config: ${1}"
+		sudo nixos-rebuild --flake ./os#${1} switch
 	}
 	function upgrade {
 		echo "Upgrade channels and rebuild OS"

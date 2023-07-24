@@ -26,8 +26,6 @@
     gcc
     unzip
     wget
-    plasma5Packages.bismuth
-    kdeconnect
     firefox
     thunderbird
     remmina

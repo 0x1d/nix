@@ -13,6 +13,8 @@
     home.username = "master";
     home.homeDirectory = "/home/master";
     home.packages = with pkgs; [
+      plasma5Packages.bismuth
+      kdeconnect
       nerdfonts
       tmux
       btop
@@ -29,32 +31,30 @@
       obsidian
     ];
 
-    programs.home-manager.enable = true;
-
-    programs.bash = {
-      enable = true;
-    };
-
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
-    programs.starship = {
-      enable = true;
-      enableBashIntegration = true;
-      settings = {
-        directory.fish_style_pwd_dir_length = 1;
-        directory.truncation_length = 2;
+    programs = {
+      home-manager.enable = true;
+      bash = {
+        enable = true;
       };
-    };
-
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
+      starship = {
+        enable = true;
+        enableBashIntegration = true;
+        settings = {
+          directory.fish_style_pwd_dir_length = 1;
+          directory.truncation_length = 2;
+        };
+      };
+      neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+        vimdiffAlias = true;
+      };
     };
 
     services = {

@@ -14,13 +14,19 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration.nix
-          ./system/boot.nix
-          ./system/i18n.nix
-          ./system/network.nix
-          ./system/sound.nix
-          ./system/xserver.nix
-          ./system/virtualisation.nix
-          ./system/packages.nix
+          ./hw/lenovo-thinkpad-e14.nix
+          ./system/base.nix
+          ./users/demo.nix
+          ./users/master.nix
+        ];
+      };
+      testos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./configuration.nix
+          ./hw/lenovo-thinkpad-e14.nix
+          ./system/base.nix
           ./users/demo.nix
           ./users/master.nix
         ];
