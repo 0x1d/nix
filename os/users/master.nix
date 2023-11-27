@@ -15,6 +15,10 @@
     home.packages = with pkgs; [
       plasma5Packages.bismuth
       kdeconnect
+      kcalc
+      filelight
+      gparted
+      veracrypt
       nerdfonts
       tmux
       btop
@@ -29,6 +33,10 @@
       kubectl
       chromium
       obsidian
+      libreoffice-qt
+      hunspell
+      hunspellDicts.de_CH
+      imagemagick
     ];
 
     programs = {

@@ -12,6 +12,11 @@
 ##    gc                Garbage collect old generations
 ##    vm                Build and run as VM
 ##
+## ~> vm
+##
+##    build             Build virtual machine
+##    run               Run virtual machine
+##
 ## ~> store
 ##
 ##    gc                Collecting garbage in nix-store
@@ -22,6 +27,13 @@
 ##
 ##    run NAME          Run a nix-shell from ./shell/
 
+RED="31"
+GREEN="32"
+GREENBLD="\e[1;${GREEN}m"
+REDBOLD="\e[1;${RED}m"
+REDITALIC="\e[3;${RED}m"
+EC="\e[0m"
+
 function info {
 	clear
 	cat motd
@@ -31,15 +43,16 @@ function info {
 
 function os {
 	function test {
-		sudo nixos-rebuild --flake ./os#nixos test
+		sudo nixos-rebuild --flake ./os#${1} test
 	}
 	function rebuild {
 		echo "Rebuild OS config: ${1}"
 		sudo nixos-rebuild --flake ./os#${1} switch
 	}
 	function upgrade {
-		echo "Upgrade channels and rebuild OS"
-		sudo nixos-rebuild --upgrade --flake ./os#nixos switch
+		echo "Upgrade channels and rebuild ${1}"
+		sudo nix-channel --update
+		sudo nixos-rebuild --upgrade --flake ./os#${1} switch
 	}
 	function changes {
 		nix profile diff-closures --profile /nix/var/nix/profiles/system
@@ -48,10 +61,17 @@ function os {
 		sudo nix-collect-garbage -d
 		sudo nixos-rebuild switch
 	}
-	function vm {
-		echo "Build and run configuration as VM"
-		rm *.qcow2
-		nixos-rebuild build-vm --flake ./os#nixos && result/bin/run-*-vm
+	${@}
+}
+
+function vm {
+	function build {
+		echo "Build configuration ${1} as VM"
+		#rm *.qcow2
+		nixos-rebuild build-vm --flake ./os#${1}
+	}
+	function run {
+		result/bin/run-*-vm
 	}
 	${@}
 }
@@ -76,6 +96,16 @@ function shell {
 		nix-shell ./shell/$1.nix
 	}
 	${@}
+}
+
+function repl {
+    info
+    echo -e "\n${REDBOLD}Enter command...${EC}"
+    read -p '~> ';
+	clear
+    ./ctl.sh ${REPLY}
+	read -p "Press any key to continue."
+    repl
 }
 
 ${@:-info}

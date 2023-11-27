@@ -6,6 +6,7 @@
   home-manager.useUserPackages = true;
 
   services.printing.enable = true;
+  services.blueman.enable = true;
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -22,6 +23,8 @@
     gnumake
     pinentry
     direnv
+    dnsutils
+    netcat
     vim
     gcc
     unzip
@@ -31,5 +34,9 @@
     remmina
     docker-buildx
     appimage-run
+    gimp
   ];
+  services.logind.extraConfig = ''
+    RuntimeDirectorySize=20G
+  '';
 }

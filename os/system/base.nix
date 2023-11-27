@@ -5,8 +5,6 @@
     ./i18n.nix
     ./network.nix
     ./sound.nix
-    ./xserver.nix
     ./virtualisation.nix
-    ./packages.nix
   ];
 }
