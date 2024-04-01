@@ -7,6 +7,7 @@
 ##
 ##    test              Rebuild and test OS without new generation
 ##    rebuild           Rebuild OS and create new generation
+##    channel           Set release channel
 ##    upgrade           Upgrade channels and rebuild OS
 ##    changes           Show changes between generations
 ##    gc                Garbage collect old generations
@@ -54,6 +55,14 @@ function os {
 		sudo nix-channel --update
 		sudo nixos-rebuild --upgrade --flake ./os#${1} switch
 	}
+	function channel {
+		sudo nix-channel --list
+		if [ -n "${1}" ]; then
+			echo "Set channel to ${1}"
+			sudo nix-channel --remove nixos
+			sudo nix-channel --add https://nixos.org/channels/nixos-${1} nixos
+		fi
+	}
 	function changes {
 		nix profile diff-closures --profile /nix/var/nix/profiles/system
 	}
@@ -99,13 +108,13 @@ function shell {
 }
 
 function repl {
-    info
-    echo -e "\n${REDBOLD}Enter command...${EC}"
-    read -p '~> ';
+	info
+	echo -e "\n${REDBOLD}Enter command...${EC}"
+	read -p '~> '
 	clear
-    ./ctl.sh ${REPLY}
+	./ctl.sh ${REPLY}
 	read -p "Press any key to continue."
-    repl
+	repl
 }
 
 ${@:-info}

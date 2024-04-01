@@ -37,6 +37,8 @@
       hunspell
       hunspellDicts.de_CH
       imagemagick
+      ledger-live-desktop
+      solana-cli
     ];
 
     programs = {
