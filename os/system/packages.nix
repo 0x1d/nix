@@ -1,7 +1,12 @@
 { pkgs, ... }: {
 
-  nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-24.8.6"
+    ];
+  };
+  
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
@@ -38,5 +43,11 @@
   ];
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
+  '';
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernation=yes
+    AllowHybridSleep=yes
+    AllowSuspendThenHibernate=yes
   '';
 }

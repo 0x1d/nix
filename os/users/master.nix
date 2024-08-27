@@ -39,6 +39,7 @@
       imagemagick
       ledger-live-desktop
       solana-cli
+      sqlite
     ];
 
     programs = {
