@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: 
+let
+    unstable = import
+    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
+    # reuse the current configuration
+    { config = config.nixpkgs.config; };
+in {
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -18,6 +24,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+
 
   environment.systemPackages = with pkgs; [
     fd
@@ -40,7 +47,12 @@
     docker-buildx
     appimage-run
     gimp
+    unstable.libation
+    unstable.ledger-live-desktop
+    unstable.android-tools
+    unstable.android-udev-rules
   ];
+
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
   '';

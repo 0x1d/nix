@@ -4,7 +4,7 @@
     isNormalUser = true;
     description = "master";
     initialPassword = "master";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" ];
   };
 
   home-manager.users.master = {
@@ -37,9 +37,10 @@
       hunspell
       hunspellDicts.de_CH
       imagemagick
-      ledger-live-desktop
       solana-cli
       sqlite
+      rtl-sdr
+      brave
     ];
 
     programs = {

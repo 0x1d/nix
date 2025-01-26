@@ -48,7 +48,7 @@ function os {
 	}
 	function rebuild {
 		echo "Rebuild OS config: ${1}"
-		sudo nixos-rebuild --flake ./os#${1} switch
+		sudo nixos-rebuild --flake ./os#${1} switch --impure
 	}
 	function upgrade {
 		echo "Upgrade channels and rebuild ${1}"
