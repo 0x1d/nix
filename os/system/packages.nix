@@ -1,18 +1,23 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 let
-    unstable = import
-    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
+  unstable = import
+    (builtins.fetchTarball {
+      url = "https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable";
+      sha256 = "sha256:19wkjfhyidvkp4wjrr7idx83iiql6bskp1x1wrp52y0lc3xx847y";
+    })
     # reuse the current configuration
     { config = config.nixpkgs.config; };
-in {
+in
+{
 
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
       "electron-24.8.6"
+      "electron-25.9.0"
     ];
   };
-  
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
@@ -47,10 +52,18 @@ in {
     docker-buildx
     appimage-run
     gimp
-    unstable.libation
-    unstable.ledger-live-desktop
-    unstable.android-tools
-    unstable.android-udev-rules
+    libation
+    ledger-live-desktop
+    ledger-udev-rules
+    android-tools
+    android-udev-rules
+    ghostty
+    alacritty
+    brave
+    #unstable.gsconnect
+    code-cursor
+    go
+    gnomeExtensions.forge
   ];
 
   services.logind.extraConfig = ''

@@ -13,13 +13,13 @@
     home.username = "master";
     home.homeDirectory = "/home/master";
     home.packages = with pkgs; [
-      plasma5Packages.bismuth
-      kdeconnect
-      kcalc
-      filelight
+      #plasma5Packages.bismuth
+      #kdeconnect
+      #kcalc
+      #filelight
       gparted
       veracrypt
-      nerdfonts
+      #nerdfonts
       tmux
       btop
       ranger
@@ -37,10 +37,9 @@
       hunspell
       hunspellDicts.de_CH
       imagemagick
-      solana-cli
+      #solana-cli
       sqlite
       rtl-sdr
-      brave
     ];
 
     programs = {
