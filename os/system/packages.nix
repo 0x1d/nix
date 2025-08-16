@@ -64,8 +64,32 @@ in
     code-cursor
     go
     gnomeExtensions.forge
+    platformio
+    avrdude
+    #python314
+    python312
+    esptool
+    wireguard-tools
+    protonvpn-gui
+    uv
+    portaudio
+    python312Packages.pyaudio
   ];
 
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    uv
+    portaudio
+  ];
+  # for protonvpn
+  networking.firewall.checkReversePath = false;
+  
+  services.udev.packages = [ 
+    pkgs.platformio-core
+    pkgs.platformio-core.udev
+    pkgs.openocd
+  ];
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
   '';

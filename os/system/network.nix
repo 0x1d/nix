@@ -1,11 +1,11 @@
 { pkgs, ... }: {
   networking = {
     hostName = "nixos";
-    nameservers = [ "192.168.1.1" "192.168.2.1" "9.9.9.9" "2620:fe::fe" ];
+    #nameservers = [ "192.168.1.1" "10.0.0.1" "10.0.1.1" "9.9.9.9" "2620:fe::fe" ];
     #nameservers = [ "127.0.0.1" ];
     networkmanager = {
       enable = true;
-      dns = "none";
+      #dns = "none";
     };
     firewall = {
       enable = true;

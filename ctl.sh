@@ -68,7 +68,7 @@ function os {
 	}
 	function gc {
 		sudo nix-collect-garbage -d
-		sudo nixos-rebuild switch
+		os rebuild nixos
 	}
 	${@}
 }

@@ -22,7 +22,7 @@
           ./users/master.nix
         ];
       };
-      gnome = nixpkgs.lib.nixosSystem {
+      hyprland = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           home-manager.nixosModules.home-manager
@@ -30,7 +30,7 @@
           ./hardware/lenovo-thinkpad-e14.nix
           ./system/base.nix
           ./system/packages.nix
-          ./system/desktop/gnome.nix
+          ./system/desktop/hyprland.nix
           ./users/demo.nix
           ./users/master.nix
         ];

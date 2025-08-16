@@ -4,7 +4,7 @@
     isNormalUser = true;
     description = "master";
     initialPassword = "master";
-    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "tty" "dialout" "audio"];
   };
 
   home-manager.users.master = {
@@ -17,6 +17,7 @@
       #kdeconnect
       #kcalc
       #filelight
+      ghostty
       gparted
       veracrypt
       #nerdfonts
@@ -40,6 +41,7 @@
       #solana-cli
       sqlite
       rtl-sdr
+      gopls
     ];
 
     programs = {
@@ -59,13 +61,13 @@
           directory.truncation_length = 2;
         };
       };
-      neovim = {
-        enable = true;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-      };
+      #neovim = {
+      #  enable = true;
+      #  defaultEditor = true;
+      #  viAlias = true;
+      #  vimAlias = true;
+      #  vimdiffAlias = true;
+      #};
     };
 
     services = {

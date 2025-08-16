@@ -1,6 +1,21 @@
-# Nix Configuration
+# NixOS Configuration
 
-This repo contains my personal Nix / NixOS configuration.
+This repo contains my personal NixOS configuration with multiple desktop environments.
+
+## Quick Start
+
+### Available Configurations
+- **`nixos`** - GNOME desktop environment  
+- **`hyprland`** - Hyprland window manager
+
+### Quick Commands
+```bash
+# Test configuration without switching
+./ctl.sh os test hyprland
+
+# Switch to Hyprland
+./ctl.sh os rebuild hyprland
+```
 
 ## Usage
 
