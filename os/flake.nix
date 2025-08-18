@@ -9,7 +9,7 @@
 
   outputs = { self, nixpkgs, home-manager }: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      gnome = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           home-manager.nixosModules.home-manager
@@ -18,6 +18,19 @@
           ./system/base.nix
           ./system/packages.nix
           ./system/desktop/gnome.nix
+          ./users/demo.nix
+          ./users/master.nix
+        ];
+      };
+      kde = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./configuration.nix
+          ./hardware/lenovo-thinkpad-e14.nix
+          ./system/base.nix
+          ./system/packages.nix
+          ./system/desktop/plasma.nix
           ./users/demo.nix
           ./users/master.nix
         ];

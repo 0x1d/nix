@@ -5,8 +5,9 @@ This repo contains my personal NixOS configuration with multiple desktop environ
 ## Quick Start
 
 ### Available Configurations
-- **`nixos`** - GNOME desktop environment  
-- **`hyprland`** - Hyprland window manager
+- **`gnome`** - GNOME desktop environment  
+- **`kde`** - KDE Plasma desktop environment
+- **`hyprland`** - Hyprland window manager  
 
 ### Quick Commands
 ```bash
