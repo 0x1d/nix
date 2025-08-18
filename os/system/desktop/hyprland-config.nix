@@ -369,105 +369,80 @@
     * {
         border: none;
         border-radius: 0;
-        font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-        font-size: 13px;
+        /*font-family: "Hack", "Noto Color Emoji", sans-serif;*/
+        font-size: 12px;
+        /*font-weight: bold;*/
         min-height: 0;
+
     }
 
     window#waybar {
-        background-color: rgba(43, 48, 59, 0.5);
-        border-bottom: 3px solid rgba(100, 149, 237, 0.5);
-        color: #ffffff;
-        transition-property: background-color;
-        transition-duration: .5s;
+        /*background: rgba(0,0,0,.2);*/
+        background: transparent;
+        /*border-bottom: 1px solid rgba(100, 114, 125, 0.5);*/
+        color: #e5e9f0;
+        margin-bottom: 0px;
+        padding-bottom:0px;
     }
 
-    window#waybar.hidden {
-        opacity: 0.2;
-    }
-
+    /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
     #workspaces button {
-        padding: 0 5px;
-        background-color: transparent;
+        padding: 5px 5px;
+        background: transparent;
         color: #ffffff;
-        border-bottom: 3px solid transparent;
-    }
-
-    #workspaces button:hover {
-        background: rgba(0, 0, 0, 0.2);
-        box-shadow: inherit;
-        border-bottom: 3px solid #ffffff;
+        /*border-bottom: 3px solid transparent;*/
+        border-radius: 10px;
     }
 
     #workspaces button.active {
-        background-color: #285577;
-        border-bottom: 3px solid #ffffff;
+        /*background: #4c566a;*/
+        background: rgba(0,0,0,.5);
+        padding: 5px;
+        margin: 5px;
+        /*border-bottom: 3px solid #e5e9f0;*/
     }
 
     #workspaces button.urgent {
-        background-color: #eb4d4b;
+        background-color: #bf616a;
     }
 
     #mode {
-        background-color: #64727d;
+        background: #64727D;
         border-bottom: 3px solid #ffffff;
     }
 
-    #clock,
-    #battery,
-    #cpu,
-    #memory,
-    #disk,
-    #temperature,
-    #backlight,
-    #network,
-    #pulseaudio,
-    #custom-media,
-    #tray,
-    #mode,
-    #idle_inhibitor,
-    #mpd {
-        padding: 0 10px;
-        margin: 0 4px;
-        color: #ffffff;
-    }
-
-    #window,
-    #workspaces {
-        margin: 0 4px;
-    }
-
-    .modules-left > widget:first-child > #workspaces {
-        margin-left: 0;
-    }
-
-    .modules-right > widget:last-child > #workspaces {
-        margin-right: 0;
+    #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
+        padding: 5px 8px;
+        margin: 5px;
+        border-radius: 10px;
+        background: rgba(0,0,0,.5);
     }
 
     #clock {
-        background-color: #64727d;
+        /*background-color: #64727D;*/
+        color: #e5e9f0;
+        font-weight: bold;
     }
 
     #battery {
-        background-color: #ffffff;
-        color: #000000;
+        /*background-color: #000000;*/
+        color: #e5e9f0;
     }
 
-    #battery.charging, #battery.plugged {
-        color: #ffffff;
-        background-color: #26a65b;
+    #battery.charging {
+        /*background-color: #000000;*/
+        color: #e5e9f0;
     }
 
     @keyframes blink {
         to {
-            background-color: #ffffff;
+            /*background-color: #ffffff;*/
             color: #000000;
         }
     }
 
     #battery.critical:not(.charging) {
-        background-color: #f53c3c;
+        background: #f53c3c;
         color: #ffffff;
         animation-name: blink;
         animation-duration: 0.5s;
@@ -476,34 +451,76 @@
         animation-direction: alternate;
     }
 
-    #battery.warning {
-        background-color: #f39c12;
-        color: #ffffff;
+    #cpu {
+        /*background: #2ecc71;*/
+        color: #e5e9f0;
     }
 
-    label:focus {
-        background-color: #000000;
+    #memory {
+        /*background: #9b59b6;*/
+        color: #e5e9f0;
+    }
+
+    #backlight {
+        /*background: #90b1b1;*/
+        color: #e5e9f0;
+    }
+
+    #network {
+        /*background: #2980b9;*/
+        color: #e5e9f0;
     }
 
     #network.disconnected {
-        background-color: #53a2ba;
+        /*background: #f53c3c;*/
+        color: #e5e9f0;
+    }
+
+    #pulseaudio {
+        /*background: #000000;*/
+        color: #e5e9f0;
     }
 
     #pulseaudio.muted {
-        background-color: #90b1b1;
+        /*background: #000000;*/
+        color: #e5e9f0;
+    }
+
+    #custom-media {
+        background: #66cc99;
+        color: #2a5c45;
+    }
+
+    .custom-spotify {
+        background: #66cc99;
+    }
+
+    .custom-vlc {
+        background: #ffa000;
+    }
+
+    #temperature {
+        /*background: #f0932b;*/
     }
 
     #temperature.critical {
-        background-color: #eb4d4b;
+        background: #eb4d4b;
     }
 
-    #tray > .passive {
-        -gtk-icon-effect: dim;
+    #tray {
+        /*background-color: #2980b9;*/
+        color: #e5e9f0;
     }
 
-    #tray > .needs-attention {
-        -gtk-icon-effect: highlight;
+    #idle_inhibitor {
+        background-color: #2d3436;
     }
+
+    #idle_inhibitor.activated {
+        background-color: #ecf0f1;
+        color: #2d3436;
+    }
+
   '';
 
   # Create Dunst configuration
