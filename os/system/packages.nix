@@ -76,6 +76,11 @@ in
     python312Packages.pyaudio
   ];
 
+  fonts.packages = with pkgs; [ 
+    nerd-fonts._0xproto
+    nerd-fonts.droid-sans-mono 
+  ];
+
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
