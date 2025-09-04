@@ -74,6 +74,8 @@ in
     uv
     portaudio
     python312Packages.pyaudio
+    hwinfo
+    usbutils
   ];
 
   fonts.packages = with pkgs; [ 
