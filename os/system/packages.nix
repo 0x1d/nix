@@ -3,7 +3,7 @@ let
   unstable = import
     (builtins.fetchTarball {
       url = "https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable";
-      sha256 = "sha256:19wkjfhyidvkp4wjrr7idx83iiql6bskp1x1wrp52y0lc3xx847y";
+      sha256 = "sha256:1j0ir1f9zv9y674apv7fnmmhr0qf8bjnh7qv6ia47bbs1pzxgr2x";
     })
     # reuse the current configuration
     { config = config.nixpkgs.config; };
@@ -76,6 +76,7 @@ in
     python312Packages.pyaudio
     hwinfo
     usbutils
+    unstable.cursor-cli
   ];
 
   fonts.packages = with pkgs; [ 
