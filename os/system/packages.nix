@@ -1,14 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 let
-  unstable = import
-    (builtins.fetchTarball {
-      url = "https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable";
-      sha256 = "sha256:1j0ir1f9zv9y674apv7fnmmhr0qf8bjnh7qv6ia47bbs1pzxgr2x";
-    })
-    # reuse the current configuration
-    { config = config.nixpkgs.config; };
-in
-{
+  unstable = import nixpkgs-unstable {
+    system = pkgs.system;
+    config = config.nixpkgs.config;
+  };
+in {
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -37,6 +33,8 @@ in
     ripgrep
     jq
     git
+    ranger
+    highlight
     gnumake
     pinentry
     direnv
@@ -61,7 +59,7 @@ in
     alacritty
     brave
     #unstable.gsconnect
-    code-cursor
+    unstable.code-cursor
     go
     gnomeExtensions.forge
     platformio
@@ -77,6 +75,7 @@ in
     hwinfo
     usbutils
     unstable.cursor-cli
+    ffmpeg
   ];
 
   fonts.packages = with pkgs; [ 

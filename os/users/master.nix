@@ -12,6 +12,9 @@
     home.stateVersion = "23.05";
     home.username = "master";
     home.homeDirectory = "/home/master";
+    home.sessionVariables = {
+      EDITOR = "vim";
+    };
     home.packages = with pkgs; [
       #plasma5Packages.bismuth
       #kdeconnect
