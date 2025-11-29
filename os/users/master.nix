@@ -29,7 +29,6 @@
       ranger
       vscode
       nodejs
-      terraform
       consul
       nomad
       packer

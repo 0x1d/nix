@@ -76,6 +76,8 @@ in {
     usbutils
     unstable.cursor-cli
     ffmpeg
+    unstable.golangci-lint
+    unstable.terraform
   ];
 
   fonts.packages = with pkgs; [ 
