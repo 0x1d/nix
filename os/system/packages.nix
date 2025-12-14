@@ -1,7 +1,7 @@
 { config, pkgs, nixpkgs-unstable, ... }:
 let
   unstable = import nixpkgs-unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config = config.nixpkgs.config;
   };
 in {
@@ -36,7 +36,7 @@ in {
     ranger
     highlight
     gnumake
-    pinentry
+    pinentry-gnome3
     direnv
     dnsutils
     netcat
@@ -54,7 +54,6 @@ in {
     ledger-live-desktop
     ledger-udev-rules
     android-tools
-    android-udev-rules
     ghostty
     alacritty
     brave
@@ -99,9 +98,11 @@ in {
     pkgs.platformio-core.udev
     pkgs.openocd
   ];
-  services.logind.extraConfig = ''
-    RuntimeDirectorySize=20G
-  '';
+  services.logind.settings = {
+    Login = {
+      RuntimeDirectorySize = "20G";
+    };
+  };
   systemd.sleep.extraConfig = ''
     AllowSuspend=yes
     AllowHibernation=yes
