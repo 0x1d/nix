@@ -64,7 +64,11 @@ in {
     platformio
     avrdude
     #python314
-    python312
+    # Wrap so buildEnv does not pick up python312's broken passthru.doc (uncached on 26.05)
+    (symlinkJoin {
+      name = python312.name;
+      paths = [ python312 ];
+    })
     esptool
     wireguard-tools
     protonvpn-gui
@@ -77,6 +81,7 @@ in {
     ffmpeg
     unstable.golangci-lint
     unstable.terraform
+    unstable.opencode
   ];
 
   fonts.packages = with pkgs; [ 
@@ -103,10 +108,10 @@ in {
       RuntimeDirectorySize = "20G";
     };
   };
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=yes
-    AllowHybridSleep=yes
-    AllowSuspendThenHibernate=yes
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "yes";
+    AllowHybridSleep = "yes";
+    AllowSuspendThenHibernate = "yes";
+  };
 }
