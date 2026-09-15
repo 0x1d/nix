@@ -68,8 +68,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1785031522,
-        "narHash": "sha256-wRKz0bj269JlmruPY0nQPWx1GJayFVOVSeT6MYistsM=",
+        "lastModified": 1789501488,
+        "narHash": "sha256-D1EWm89cIuJK2uYNAjPSAqWJrxnyHq/sEV/a0YI60Sc=",
         "path": "/home/master/src/breezy-desktop-nix",
         "type": "path"
       },
