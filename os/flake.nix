@@ -9,9 +9,13 @@
     # XRLinuxDriver from https://github.com/wheaney/XRLinuxDriver/pull/80
     xrlinuxdriver.url = "path:/home/master/src/breezy-desktop-nix";
     xrlinuxdriver.inputs.nixpkgs.follows = "nixpkgs";
+    claude-desktop.url = "github:poeck/claude-desktop-nix-flake";
+    claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
+    opencode-desktop.url = "github:tomsch/opencode-desktop-nix";
+    opencode-desktop.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, xrlinuxdriver }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, xrlinuxdriver, claude-desktop, opencode-desktop }:
   let
     breezyPkgs = system: xrlinuxdriver.packages.${system};
     breezyModule = { gnome ? false }:
@@ -43,7 +47,7 @@
           ./users/master.nix
           (breezyModule { gnome = true; })
         ];
-        specialArgs = { inherit nixpkgs-unstable; };
+        specialArgs = { inherit nixpkgs-unstable claude-desktop opencode-desktop; };
       };
       kde = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -58,7 +62,7 @@
           ./users/master.nix
           (breezyModule { })
         ];
-        specialArgs = { inherit nixpkgs-unstable; };
+        specialArgs = { inherit nixpkgs-unstable claude-desktop opencode-desktop; };
       };
       hyprland = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -73,7 +77,7 @@
           ./users/master.nix
           (breezyModule { })
         ];
-        specialArgs = { inherit nixpkgs-unstable; };
+        specialArgs = { inherit nixpkgs-unstable claude-desktop opencode-desktop; };
       };
     };
   };
